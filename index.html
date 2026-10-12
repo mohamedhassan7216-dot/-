@@ -3,242 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة هبوط - كورس البرمجة</title>
+    <title>احترف البرمجة | كورس الويب الشامل 2026</title>
     <style>
-        /* هنا نكتب الـ CSS لتلوين وتنسيق الصفحة */
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --light-bg: #f4f7f6;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
+            background-color: var(--light-bg);
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            box-sizing: border-box;
         }
+
         .container {
             background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 450px;
-            width: 90%;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            max-width: 500px;
+            width: 100%;
             text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* شارة العرض المميزة */
+        .badge {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.2);
+        }
+
         h1 {
-            color: #2c3e50;
-            font-size: 24px;
-            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 26px;
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
-        p {
-            color: #7f8c8d;
-            font-size: 16px;
+
+        .description {
+            color: var(--gray);
+            font-size: 15px;
             line-height: 1.6;
             margin-bottom: 25px;
         }
-        .badge {
-            background-color: #e74c3c;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-weight: bold;
+
+        /* العداد التنازلي */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
         }
+        .timer-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 55px;
+        }
+        .timer-num {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .timer-label {
+            font-size: 11px;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+
+        /* شبكة مميزات الكورس */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .feature-item {
+            background: #f8fafc;
+            padding: 12px 8px;
+            border-radius: 10px;
+            border: 1px solid #edf2f7;
+        }
+        .feature-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .feature-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* حقول الإدخال والأزرار */
         input[type="email"] {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             margin-bottom: 15px;
-            border: 2px solid #bdc3c7;
-            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             box-sizing: border-box;
             font-size: 16px;
             text-align: center;
+            transition: all 0.3s ease;
         }
         input[type="email"]:focus {
-            border-color: #3498db;
+            border-color: var(--primary);
             outline: none;
+            box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.15);
         }
+
         button {
-            background-color: #2ecc71;
+            background-color: var(--primary);
             color: white;
             border: none;
-            padding: 14px 20px;
+            padding: 15px 20px;
             font-size: 18px;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 12px;
             width: 100%;
             cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        button:hover {
-            background-color: #27ae60;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- هنا الـ HTML اللي بيشيل العناصر والنصوص -->
-    <div class="container">
-        <span class="badge">عرض لفترة محدودة! 🔥</span>
-        <h1>احترف البرمجة من الصفر إلى أول وظيفة</h1>
-        <p>انضم إلينا اليوم واحصل على خصم 50% على أقوى كورس عملي لتطوير الويب لعام 2026. سجل إيميلك لحجز مكانك الآن.</p>
-        
-        <!-- نموذج جمع البيانات -->
-        <form>
-            <input type="email" placeholder="أدخل بريدك الإلكتروني هنا" required>
-            <button type="submit">احجز مقعدك مجاناً الآن 🚀</button>
-        </form>
-    </div>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة هبوط تفاعلية</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 0;
+            transition: all 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            transition: all 0.5s ease;
-        }
-        h1 {
-            color: #2c3e50;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #7f8c8d;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        .badge {
-            background-color: #e74c3c;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #bdc3c7;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 16px;
-            text-align: center;
-        }
-        button {
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            padding: 14px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            width: 100%;
-            cursor: pointer;
-            transition: background 0.3s ease;
+            gap: 10px;
         }
         button:hover {
-            background-color: #27ae60;
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.25);
         }
-        
-        /* تصميم رسالة النجاح المخفية في البداية */
-        .success-box {
-            display: none; /* مخفي تلقائياً */
-            animation: fadeIn 0.6s ease forwards;
-        }
-        .success-box h2 {
-            color: #2ecc71;
-            font-size: 26px;
-            margin-bottom: 10px;
-        }
-        .success-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-            display: inline-block;
+        button:active {
+            transform: translateY(0);
         }
 
-        /* حركة ظهور ناعمة للرسالة */
+        /* تأثير التحميل (Spinner) */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* تصميم رسالة النجاح */
+        .success-box {
+            display: none;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .success-box h2 {
+            color: var(--primary);
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: pop 0.5s ease;
+        }
+
+        /* حركات الأنيميشن */
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: scale(0.95) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes pop {
+            0% { transform: scale(0.5); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- القسم الأول: محتوى صفحة الهبوط الأساسي -->
+        <!-- القسم الأساسي المحتوي على العرض والنموذج -->
         <div id="main-content">
-            <span class="badge">عرض لعام 2026! 🔥</span>
+            <span class="badge">ينتهي العرض قريباً! 🔥</span>
             <h1>احترف البرمجة من الصفر إلى أول وظيفة</h1>
-            <p>انضم إلينا اليوم واحصل على خصم 50% على كورس الويب الشامل. سجل إيميلك لحجز مكانك.</p>
+            <p class="description">انضم إلينا اليوم واحصل على خصم 50% على كورس الويب الشامل. سجل إيميلك لحجز مكانك وتحميل هدية التسجيل.</p>
             
+            <!-- العداد التنازلي التفاعلي -->
+            <div class="timer-container">
+                <div class="timer-box"><span class="timer-num" id="hours">04</span><span class="timer-label">ساعة</span></div>
+                <div class="timer-box"><span class="timer-num" id="minutes">32</span><span class="timer-label">دقيقة</span></div>
+                <div class="timer-box"><span class="timer-num" id="seconds">15</span><span class="timer-label">ثانية</span></div>
+            </div>
+
+            <!-- شبكة مميزات الكورس التسويقية -->
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">💻</span>
+                    <span class="feature-text">+15 مشروع حقيقي</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📜</span>
+                    <span class="feature-text">شهادة معتمدة</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💬</span>
+                    <span class="feature-text">توجيه ومجتمع خاص</span>
+                </div>
+            </div>
+
+            <!-- نموذج حجز الإيميل -->
             <form id="landing-form">
-                <input type="email" id="user-email" placeholder="أدخل بريدك الإلكتروني هنا" required>
-                <button type="submit">احجز مقعدك مجاناً الآن 🚀</button>
+                <input type="email" id="user-email" placeholder="أدخل بريدك الإلكتروني هنا" required autocomplete="email">
+                <button type="submit" id="submit-btn">
+                    <span class="spinner" id="btn-spinner"></span>
+                    <span id="btn-text">احجز مقعدك واحصل على الهدية 🚀</span>
+                </button>
             </form>
         </div>
 
-        <!-- القسم الثاني: رسالة النجاح المحتوية على المفاجأة (تظهر بعد الإدخال) -->
+        <!-- قسم رسالة النجاح والمفاجأة -->
         <div id="success-message" class="success-box">
-            <span class="success-icon">🎉👏</span>
-            <h2>تم التسجيل بنجاح!</h2>
-            <p>شكراً لاهتمامك. تم إرسال رابط كتاب <strong>"أساسيات البرمجة للمبتدئين"</strong> مجاناً إلى إيميلك: <br><strong id="display-email" style="color:#3498db;"></strong></p>
-            <p style="font-size: 13px; color:#95a5a6;">تفقد صندوق الوارد أو الـ Spam خلال دقيقتين.</p>
+            <span class="success-icon">🎁🎉</span>
+            <h2>تم حجز مقعدك بنجاح!</h2>
+            <p>يسعدنا انضمامك. أرسلنا لك كتاب <strong>"أساسيات البرمجة للمبتدئين"</strong> كهدية ترحيبية فوراً إلى إيميلك:</p>
+            <p><strong id="display-email" style="color: var(--secondary); background: #ebf8ff; padding: 6px 12px; border-radius: 8px; display: inline-block;"></strong></p>
+            <p style="font-size: 13px; color: var(--gray); margin-top: 20px;">تفقد صندوق الوارد أو الـ Spam خلال دقيقتين لبدء القراءة.</p>
         </div>
     </div>
 
-    <!-- كود الجافا سكريبت المسؤول عن التفاعل وتحويل الأشكال -->
     <script>
-        // 1. نمسك العناصر من الـ HTML ونحفظها في متغيرات
+        // --- 1. نظام تشغيل العداد التنازلي التفاعلي ---
+        let duration = 4 * 3600 + 32 * 60 + 15; // الوقت بالثواني (4 ساعات، 32 دقيقة، 15 ثانية)
+        const hoursElem = document.getElementById('hours');
+        const minutesElem = document.getElementById('minutes');
+        const secondsElem = document.getElementById('seconds');
+
+        const countdown = setInterval(() => {
+            if (duration <= 0) {
+                clearInterval(countdown);
+                return;
+            }
+            duration--;
+            
+            let hrs = Math.floor(duration / 3600);
+            let mins = Math.floor((duration % 3600) / 60);
+            let secs = duration % 60;
+
+            hoursElem.textContent = String(hrs).padStart(2, '0');
+            minutesElem.textContent = String(mins).padStart(2, '0');
+            secondsElem.textContent = String(secs).padStart(2, '0');
+        }, 1000);
+
+
+        // --- 2. معالجة النموذج وتأثير التحميل ---
         const form = document.getElementById('landing-form');
         const mainContent = document.getElementById('main-content');
         const successMessage = document.getElementById('success-message');
         const displayEmail = document.getElementById('display-email');
         const userEmailInput = document.getElementById('user-email');
-
-        // 2. نراقب اللحظة التي يضغط فيها المستخدم على زر الإرسال
-        form.addEventListener('submit', function(event) {
-            // نمنع الصفحة من عمل Refresh وضياع البيانات
-            event.preventDefault(); 
-            
-            // نأخذ الإيميل الذي كتبه المستخدم ونضعه داخل رسالة النجاح
-            displayEmail.textContent = userEmailInput.value;
-
-            // نُخفي صندوق الإدخال الأساسي
-            mainContent.style.display = 'none';
-            
-            // نُظهر رسالة النجاح المتحركة
-            successMessage.style.display = 'block';
-        });
-    </script>
-
-</body>
-</html>
+        const btnSpinner = document.getElementById('btn-spinner');
+        const btnText = document.getElementById('btn-text');
